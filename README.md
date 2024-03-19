@@ -48,8 +48,8 @@ app.UseDevLocalAuthentication();
 
 ## ChangeLog
 ### v1.0.1
-1.[breaking] Change appsettings.json `Dev.Local` section
-2.Use `app.UseDevLocalAuthentication()` instead of `context.Services.AddDevLocalAuthentication();`
+1. [breaking] Change appsettings.json `Dev.Local` section
+2. Use `app.UseDevLocalAuthentication()` instead of `context.Services.AddDevLocalAuthentication();`
 
 Use a instead of b
 
