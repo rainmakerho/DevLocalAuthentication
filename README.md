@@ -9,7 +9,7 @@ Package that reads account data from appsettings.json and automatically performs
 
 ## Installation
 
-You can install the Molecular Mass Calculator library via NuGet Package Manager Console:
+You can install the Dev Local Authentication library via NuGet Package Manager Console:
 
 ```bash
 NuGet\Install-Package DevLocalAuthentication
