@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	  <VersionPrefix>1.0.0</VersionPrefix>
+	  <VersionPrefix>1.0.1</VersionPrefix>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PackageIcon>icon.png</PackageIcon>
 	  <Company>gss.com.tw</Company>
@@ -11,6 +11,9 @@
 	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
 	  <PackageTags>AuthenticationHandler;LocalAuthenticate;Custom Authentication</PackageTags>
 	  <Description>Package that reads account data from appsettings.json and automatically performs login for convenient local development.</Description>
+	  <PackageProjectUrl>https://github.com/rainmakerho/DevLocalAuthentication</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/rainmakerho/DevLocalAuthentication.git</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
 	<ItemGroup>

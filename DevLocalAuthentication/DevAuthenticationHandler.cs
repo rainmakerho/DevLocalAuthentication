@@ -25,27 +25,13 @@ namespace DevLocalAuthentication
         protected async override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             var devLocalConfig = _configuration.GetSection(DevAuthOption.Scheme);
-            if (!devLocalConfig.Exists())
+            var principal = devLocalConfig.GetDevPrincipleOrNull();
+            if (principal == null)
             {
                 return AuthenticateResult.NoResult();
             }
-            var claimsData = devLocalConfig.GetChildren().ToDictionary(x => x.Key, x => x.Value);
-            var claims = new List<Claim>();
-            foreach (var claim in claimsData)
-            {
-                var claimType = GetClaimTypeByName(claim.Key);
-                claims.Add(new Claim(claimType, claim.Value));
-            }
-            var claimsIdentity = new ClaimsIdentity(claims, DevAuthOption.Scheme);
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-            var authenticationTicket = new AuthenticationTicket(claimsPrincipal, DevAuthOption.Scheme);
+            var authenticationTicket = new AuthenticationTicket(principal, DevAuthOption.Scheme);
             return AuthenticateResult.Success(authenticationTicket);
-        }
-
-        private string GetClaimTypeByName(string name)
-        {
-            var claimType = typeof(ClaimTypes).GetField(name)?.GetValue(null);
-            return (string)(claimType ?? name);
         }
     }
 }

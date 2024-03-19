@@ -22,21 +22,36 @@ Here's how you can use the library to auto login:
 ##### appsettings.json
 ```json
 "Dev.Local": {
-    "sub": "bbf6ea7e-c072-4e74-b359-4c51b8eb5442",
-    "NameIdentifier": "bbf6ea7e-c072-4e74-b359-4c51b8eb5442",
-    "Name": "x1@gss.com.tw",
-    "preferred_username": "x1@gss.com.tw",
-    "Email": "x1@gss.com.tw"
-}
+    "Claims": {
+      "sub": "bbf6ea7e-c072-4e74-b359-4c51b8eb5442",
+      "NameIdentifier": "bbf6ea7e-c072-4e74-b359-4c51b8eb5442",
+      "Name": "x1@gss.com.tw",
+      "preferred_username": "x1@gss.com.tw",
+      "Email": "x1@gss.com.tw"
+    },
+    "Enable":"true"
+    //  ,
+    //"AuthenticationType": "Dev.Local"
+    //"AuthenticationType": "Identity.Application"
+    //"AuthenticationType": "whateveryouwant"
+  }
 ```
 
-##### ConfigureAuthentication
+##### Middleware
 ```csharp
-// check Dev.Local section exists, add AddScheme
-builder.Services.AddDevLocalAuthentication(builder.Configuration);
+
+// before app.UseAuthorization();
+app.UseDevLocalAuthentication();
+
+
 ```
 
 ## ChangeLog
+### v1.0.1
+1.[breaking] Change appsettings.json `Dev.Local` section
+2.Use `app.UseDevLocalAuthentication()` instead of `context.Services.AddDevLocalAuthentication();`
+
+Use a instead of b
 
 ## Contributing
 
